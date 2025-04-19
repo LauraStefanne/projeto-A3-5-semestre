@@ -1,0 +1,37 @@
+Cria tabela usuários 
+
+CREATE TABLE usuarios ( 
+
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+
+    nome VARCHAR(100) NOT NULL, 
+
+    email VARCHAR(100) NOT NULL, 
+
+    senha VARCHAR(100) NOT NULL 
+
+); 
+
+Cria tabela ranking 
+
+CREATE TABLE ranking ( 
+
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+
+    usuario_id INT, 
+
+    pontuacao INT, 
+
+    data TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+
+); 
+
+ 
+
+Insere id-usuario e nome usuario na tabela ranking  
+
+SELECT r.id, r.id_usuario, u.nome, r.pontuacao 
+
+FROM ranking r 
+
+JOIN usuarios u ON r.id_usuario = u.id; 
