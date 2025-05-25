@@ -87,6 +87,31 @@ def login():
 def jogo():
     return render_template('jogo.html')  
 
+# Esqueci a senha
+@app.route('/senha', methods=['GET', 'POST'])
+def esqueci_senha():
+    if request.method == 'POST':
+        email = request.form['email']
+        nova_senha = request.form['nova_senha']
+
+        conn = criar_conexao()
+        if conn:
+            try:
+                cursor = conn.cursor()
+                query = "UPDATE usuarios SET senha = %s WHERE email = %s"
+                cursor.execute(query, (nova_senha, email))
+                conn.commit()
+
+                if cursor.rowcount == 0:
+                    return "E-mail não encontrado."
+                return "Senha alterada com sucesso. <a href='/login'>Ir para o login</a>"
+            except Error as e:
+                return f"Erro ao atualizar a senha: {e}"
+            finally:
+                cursor.close()
+                conn.close()
+    return render_template('senha.html')
+
 @app.route('/ranking', methods=['GET', 'POST'])
 def ranking():
     lista_ranking = []
@@ -126,8 +151,6 @@ def ranking():
             conn.close()
 
     return render_template('ranking.html', lista_ranking=lista_ranking)
-
-
 
         
 if __name__ == '__main__':

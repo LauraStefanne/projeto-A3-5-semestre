@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="../icon/8522214.png" type="image/x-icon">
 
     <title>Quiz Cyber Security</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
   </head>
   <body>
     <nav>
@@ -25,8 +24,7 @@
         <a href="{{ url_for('jogo') }}"><button type="button">Jogar</button></a>
 
           <a href="/cadastro">Cadastro</a>
-          <a href="/login">Login</a>         
-          <a href="/ranking">Ranking</a>      
+          <a href="/login">Login</a>          
         
       </div>
     </main>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 <body>
     <form class="cadastro" method="POST" action="/login">
@@ -12,6 +13,7 @@
             <input type="password" name="senha" placeholder="Senha" required>
             <button type="submit">Entrar</button>
             <h2><a href="/">Voltar</a></h2>
+            <p><a href="/senha">Esqueci minha senha</a></p>
         </div>
     </form>
 </body>

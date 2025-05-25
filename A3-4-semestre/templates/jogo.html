@@ -5,25 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Quiz App</title>
- 
-</head>
-<body>
-  <div class="container">
-    <div id="question-container" class="hide">
-      <div id="question">Question</div>
-      <div id="answer-buttons" class="btn-grid">
-        <button class="btn">Answer 1</button>
-        <button class="btn">Answer 2</button>
-        <button class="btn">Answer 3</button>
-        <button class="btn">Answer 4</button>
-      </div>
-    </div>
-    <div class="controls">
-      <button id="start-btn" class="start-btn btn">Start</button>
-      <button id="next-btn" class="next-btn btn hide">Next</button>
-    </div>
-  </div>
 
-</body>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jogo.css') }}">
+
+   <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+ </head>
+  <body>
+    <nav class="menu">
+      <div class="div-menu">
+        <ul>
+          <div class="bonus"><li>Bonus</li></div>
+          <div class="direita">
+            <div class="config-icon" onclick="toggleConfigMenu()">
+              <img
+                class="rotating-image"
+                src="/icon/gear-fill.svg
+                "
+                alt="gear.svg"
+                width="25px"
+              />
+            </div>
+
+            <div class="config-box" id="configBox">
+              <h1>Configurações</h1>
+
+              <button onclick="toggleConfigMenu()">Fechar</button>
+            </div>
+
+            <!-- <li class="engrenagem"><img width="25px" src="/icon/gear-fill.svg" alt="gear.svg" ></li> -->
+            <img
+              class="fullscreen"
+              width="20px"
+              src="/icon/arrows-fullscreen.svg"
+              alt="arrows.svg"
+            />
+            <!--Pode ser um botao para deixar em fullscreen "f11"-->
+          </div>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="perguntas" id="quest">
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo
+          voluptatibus nihil doloribus beatae fugiat dolores vitae, incidunt
+          nulla? Consequatur animi repellendus cupiditate tempore voluptatibus
+          voluptatum earum delectus omnis ducimus minus.
+        </p>
+      </div>
+      <!-- As perguntas podem ser puxadas de um servidor API,junto com as responstas.-->
+
+      <div class="respostas">
+        <!-- 4 botoes interativos, provavelmente tera um numero encima do botao, quando a pessoa aperta o botao vai selecionar a resposta: ex:> <button> China </button> dentro do campo do botao tera um numero -->
+        <button id="a"></button>
+        <button id="b"></button>
+        <button id="c"></button>
+        <button id="d"></button>
+      </div>
+    </main>
+
+    <footer>
+      <div class="Nome">
+        <!-- Se possivel colocar um emoji/boneco animado perto do nome a ser exibido -->
+        <p>Kaiky</p>
+        <!--O nome vai ser puxado do banco de dados,Caso o usuario tenha feito o cadastro-->
+      </div>
+
+      <!--Colocar uns boost por acerto ou habilidades do lado do nome.-->
+    </footer>
+  </body>
+
+  <script src="QuizConfig.js"></script>
+  <script type="module" src="quest.js"></script>
+  <script type="module" src="API/questapi.js"></script>
 </html>
 
+  <script src="QuizConfig.js"></script>
+  <script src="quest.js"></script>
+</html>

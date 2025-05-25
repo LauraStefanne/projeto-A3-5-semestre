@@ -7,40 +7,8 @@
 <body>
     <h1>Registrar Pontuação</h1>
 
-    <form method="POST">
-        <label>Nome do Jogador:</label><br>
-        <input type="text" name="nome" required><br><br>
 
-        <label>Pontuação:</label><br>
-        <input type="number" name="pontuacao" required><br><br>
 
-        <input type="submit" value="Registrar">
-    </form>
-
-    <p>{{ mensagem }}</p>
-
-    {% if dados %}
-        <h2>Pontuação Registrada</h2>
-        <p>Jogador: {{ dados.nome }}</p>
-        <p>Pontuação: {{ dados.pontuacao }}</p>
-    {% endif %}
-
-    <hr>
-
-    <h2>Ranking Geral</h2>
-    <table border="1">
-        <tr>
-            <th>Nome</th>
-            <th>Pontuação</th>
-        </tr>
-        {% for item in lista_ranking %}
-        <tr>
-            <td>{{ item.nome }}</td>
-            <td>{{ item.pontuacao }}</td>
-        </tr>
-        {% endfor %}
-    </table>
 </body>
 </html>
-
 
