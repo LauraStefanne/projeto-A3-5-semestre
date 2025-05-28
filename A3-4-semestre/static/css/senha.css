@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 body {
@@ -32,7 +32,6 @@ body {
   color: #2a4368;
   margin-bottom: 15px;
   font-size: 20px;
-
 }
 
 .login-container input {
@@ -72,4 +71,11 @@ body {
 
 .login-container button:hover {
   background-color: #da1c1c;
+}
+
+.login-container > button > a{
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  margin-top: 1px;
 }

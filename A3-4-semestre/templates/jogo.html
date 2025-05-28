@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Quiz App</title>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jogo.css') }}" />
+     <script type="module" src="{{ url_for('static', filename='js/quest.js') }}"></script>
+     <script type="module" src="{{ url_for('static', filename='js/QuizConfig.js') }}"></script>
 
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/jogo.css') }}">
-
-   <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
- </head>
+  </head>
   <body>
     <nav class="menu">
       <div class="div-menu">
@@ -54,10 +53,9 @@
           voluptatum earum delectus omnis ducimus minus.
         </p>
       </div>
-      <!-- As perguntas podem ser puxadas de um servidor API,junto com as responstas.-->
 
       <div class="respostas">
-        <!-- 4 botoes interativos, provavelmente tera um numero encima do botao, quando a pessoa aperta o botao vai selecionar a resposta: ex:> <button> China </button> dentro do campo do botao tera um numero -->
+        <!-- Preenche os botões com as respostas da primeira pergunta -->
         <button id="a"></button>
         <button id="b"></button>
         <button id="c"></button>
@@ -67,20 +65,11 @@
 
     <footer>
       <div class="Nome">
-        <!-- Se possivel colocar um emoji/boneco animado perto do nome a ser exibido -->
-        <p>Kaiky</p>
-        <!--O nome vai ser puxado do banco de dados,Caso o usuario tenha feito o cadastro-->
+        <!-- Exibe o nome do usuário logado (se existir) -->
+        <p>{{ session['usuario'] if session.get('usuario') else 'Visitante' }}</p>
       </div>
-
-      <!--Colocar uns boost por acerto ou habilidades do lado do nome.-->
     </footer>
+
   </body>
-
-  <script src="QuizConfig.js"></script>
-  <script type="module" src="quest.js"></script>
-  <script type="module" src="API/questapi.js"></script>
 </html>
 
-  <script src="QuizConfig.js"></script>
-  <script src="quest.js"></script>
-</html>

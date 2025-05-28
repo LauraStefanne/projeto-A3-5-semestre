@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, session, url_for
+from flask import json
 import mysql.connector
 from mysql.connector import Error
 
@@ -111,46 +112,6 @@ def esqueci_senha():
                 cursor.close()
                 conn.close()
     return render_template('senha.html')
-
-@app.route('/ranking', methods=['GET', 'POST'])
-def ranking():
-    lista_ranking = []
-
-    conn = criar_conexao()
-    if conn:
-        try:
-            cursor = conn.cursor(dictionary=True, buffered=True)
-
-            if request.method == 'POST':
-                nome = request.form['nome']
-                pontuacao = request.form['pontuacao']
-
-                # Verifica se o usuário existe
-                query_usuario = "SELECT id FROM usuarios WHERE nome = %s"
-                cursor.execute(query_usuario, (nome,))
-                usuario = cursor.fetchone()
-
-                if usuario:
-                    # Insere na tabela ranking
-                    query_inserir = "INSERT INTO ranking (id_usuario, pontuacao) VALUES (%s, %s)"
-                    cursor.execute(query_inserir, (usuario['id'], pontuacao))
-                    conn.commit()
-
-            # Consulta todos os registros de ranking com nome do usuário
-            consulta_ranking = """
-                SELECT u.nome, r.pontuacao 
-                FROM ranking r
-                JOIN usuarios u ON r.id_usuario = u.id
-            """
-            #u é abreviação de usuarios e r é abreviação de ranking
-            #join liga a tabela ranking e a tabela usuario para pegar o nome do usuario e o id do usuario
-            cursor.execute(consulta_ranking)
-            lista_ranking = cursor.fetchall()
-
-        finally:
-            conn.close()
-
-    return render_template('ranking.html', lista_ranking=lista_ranking)
 
         
 if __name__ == '__main__':

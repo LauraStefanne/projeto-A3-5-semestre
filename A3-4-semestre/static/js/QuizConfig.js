@@ -1,3 +1,4 @@
+
 //CONFIG
 
 function toggleConfigMenu() {
